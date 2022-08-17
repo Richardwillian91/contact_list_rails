@@ -2069,3 +2069,442 @@ Processing by StaticPagesController#index as HTML
 Completed 200 OK in 1069ms (Views: 1064.0ms | ActiveRecord: 0.0ms | Allocations: 171723)
 
 
+Started GET "/" for ::1 at 2022-08-17 02:52:10 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 394)
+  Rendered layouts/_header.html.erb (Duration: 12.0ms | Allocations: 5256)
+  Rendered layout layouts/application.html.erb (Duration: 79.7ms | Allocations: 55325)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 0.0ms | Allocations: 60588)
+
+
+  
+ActionView::Template::Error (undefined method `user_signed_in?' for #<ActionView::Base:0x0000000000b450>):
+    14:   <!-- Conteudo exibido em telas maiores e que serao escondidos em telas menores -->
+    15:   <div class="collapse navbar-collapse" id="expanded-menu">
+    16:     <ul class="nav navbar-nav">
+    17:       <% if !user_signed_in? %>
+    18:         <li class="active">
+    19:           <%= link_to 'Nova Conta', cadastro_path %>
+    20:         </li>
+  
+app/views/layouts/_header.html.erb:17
+app/views/layouts/application.html.erb:14
+Started GET "/" for ::1 at 2022-08-17 02:53:09 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 136)
+  Rendered layouts/_header.html.erb (Duration: 1.8ms | Allocations: 1374)
+  Rendered layout layouts/application.html.erb (Duration: 24.2ms | Allocations: 8695)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms | Allocations: 9700)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <nav class="navbar navbar-inverse navbar-static-top">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#expanded-menu" aria-expanded=" false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Contact List', root_url, class: 'navbar-brand' %>
+    </div>
+
+  <!-- Conteudo exibido em telas maiores e que serao escondidos em telas menores -->
+  <div class="collapse navbar-collapse" id="expanded-menu">
+    <ul class="nav navbar-nav">
+     
+        <li class="active">
+          <%= link_to 'Nova Conta', cadastro_path %>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+
+     
+        <li>
+          <%= link_to 'Entrar', entrar_path %>
+      </li>
+      <% else %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            bem vindo, <%= current_user.name %> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to 'Minha Pagina', user_contacts_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to 'Editar', edit_user_path(current_user) %>
+            </li>
+            <li class="divider" role="separator"></li>
+            <li>
+              <%= link_to 'Sair', sair_path, method: :delete %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+
+    </ul>
+
+  </div>
+
+  </div>
+
+</nav>
+):
+1:    <nav class="navbar navbar-inverse navbar-static-top">
+2:    
+3:      <div class="container-fluid">
+4:        <div class="navbar-header">
+5:          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#expanded-menu" aria-expanded=" false">
+6:            <span class="sr-only">Toggle navigation</span>
+7:            <span class="icon-bar"></span>
+8:            <span class="icon-bar"></span>
+9:            <span class="icon-bar"></span>
+10:          </button>
+11:          <%= link_to 'Contact List', root_url, class: 'navbar-brand' %>
+12:        </div>
+13:    
+14:      <!-- Conteudo exibido em telas maiores e que serao escondidos em telas menores -->
+15:      <div class="collapse navbar-collapse" id="expanded-menu">
+16:        <ul class="nav navbar-nav">
+17:         
+18:            <li class="active">
+19:              <%= link_to 'Nova Conta', cadastro_path %>
+20:            </li>
+21:          <% end %>
+22:        </ul>
+23:    
+24:        <ul class="nav navbar-nav navbar-right">
+25:    
+26:         
+27:            <li>
+28:              <%= link_to 'Entrar', entrar_path %>
+29:          </li>
+30:          <% else %>
+31:            <li class="dropdown">
+32:              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+33:                bem vindo, <%= current_user.name %> <span class="caret"></span>
+34:              </a>
+35:              <ul class="dropdown-menu">
+36:                <li>
+37:                  <%= link_to 'Minha Pagina', user_contacts_path(current_user) %>
+38:                </li>
+39:                <li>
+40:                  <%= link_to 'Editar', edit_user_path(current_user) %>
+41:                </li>
+42:                <li class="divider" role="separator"></li>
+43:                <li>
+44:                  <%= link_to 'Sair', sair_path, method: :delete %>
+45:                </li>
+46:              </ul>
+47:            </li>
+48:          <% end %>
+49:    
+50:        </ul>
+51:    
+52:      </div>
+53:    
+54:      </div>
+55:    
+56:    </nav>
+  
+app/views/layouts/_header.html.erb:30: syntax error, unexpected `else', expecting end-of-input
+app/views/layouts/_header.html.erb:30: syntax error, unexpected `else', expecting end-of-input
+app/views/layouts/_header.html.erb:30: syntax error, unexpected `else', expecting end-of-input
+app/views/layouts/_header.html.erb:30: syntax error, unexpected `else', expecting end-of-input
+app/views/layouts/_header.html.erb:30: syntax error, unexpected `else', expecting end-of-input
+app/views/layouts/_header.html.erb:30: syntax error, unexpected `else', expecting end-of-input
+app/views/layouts/application.html.erb:14
+Started GET "/" for ::1 at 2022-08-17 02:53:21 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 136)
+  Rendered layouts/_header.html.erb (Duration: 19.1ms | Allocations: 4397)
+  Rendered layout layouts/application.html.erb (Duration: 44.3ms | Allocations: 11717)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 0.0ms | Allocations: 12717)
+
+
+  
+ActionView::Template::Error (undefined method `user_signed_in?' for #<ActionView::Base:0x0000000000bc70>):
+    14:   <!-- Conteudo exibido em telas maiores e que serao escondidos em telas menores -->
+    15:   <div class="collapse navbar-collapse" id="expanded-menu">
+    16:     <ul class="nav navbar-nav">
+    17:       <% if !user_signed_in? %>
+    18:         <li class="active">
+    19:           <%= link_to 'Nova Conta', cadastro_path %>
+    20:         </li>
+  
+app/views/layouts/_header.html.erb:17
+app/views/layouts/application.html.erb:14
+Started GET "/" for ::1 at 2022-08-17 02:56:24 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 136)
+  Rendered layouts/_header.html.erb (Duration: 13.0ms | Allocations: 4353)
+  Rendered layout layouts/application.html.erb (Duration: 40.9ms | Allocations: 11674)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.0ms | Allocations: 12674)
+
+
+  
+ActionView::Template::Error (undefined method `user_signed_in?' for #<ActionView::Base:0x0000000000c058>):
+    23: 
+    24:     <ul class="nav navbar-nav navbar-right">
+    25: 
+    26:       <% if !user_signed_in? %>
+    27:         <li>
+    28:           <%= link_to 'Entrar', entrar_path %>
+    29:       </li>
+  
+app/views/layouts/_header.html.erb:26
+app/views/layouts/application.html.erb:14
+Started GET "/" for ::1 at 2022-08-17 02:56:38 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 136)
+  Rendered layouts/_header.html.erb (Duration: 0.9ms | Allocations: 1371)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 8689)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 9685)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <nav class="navbar navbar-inverse navbar-static-top">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#expanded-menu" aria-expanded=" false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Contact List', root_url, class: 'navbar-brand' %>
+    </div>
+
+  <!-- Conteudo exibido em telas maiores e que serao escondidos em telas menores -->
+  <div class="collapse navbar-collapse" id="expanded-menu">
+    <ul class="nav navbar-nav">
+      
+        <li class="active">
+            <a href="#">Nova conta</a>
+        </li>
+    
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+
+      
+        <li>
+          <%= link_to 'Entrar', entrar_path %>
+      </li>
+      <% else %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            bem vindo, <%= current_user.name %> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to 'Minha Pagina', user_contacts_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to 'Editar', edit_user_path(current_user) %>
+            </li>
+            <li class="divider" role="separator"></li>
+            <li>
+              <%= link_to 'Sair', sair_path, method: :delete %>
+            </li>
+          </ul>
+        </li>
+     
+
+    </ul>
+
+  </div>
+
+  </div>
+
+</nav>
+):
+1:    <nav class="navbar navbar-inverse navbar-static-top">
+2:    
+3:      <div class="container-fluid">
+4:        <div class="navbar-header">
+5:          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#expanded-menu" aria-expanded=" false">
+6:            <span class="sr-only">Toggle navigation</span>
+7:            <span class="icon-bar"></span>
+8:            <span class="icon-bar"></span>
+9:            <span class="icon-bar"></span>
+10:          </button>
+11:          <%= link_to 'Contact List', root_url, class: 'navbar-brand' %>
+12:        </div>
+13:    
+14:      <!-- Conteudo exibido em telas maiores e que serao escondidos em telas menores -->
+15:      <div class="collapse navbar-collapse" id="expanded-menu">
+16:        <ul class="nav navbar-nav">
+17:          
+18:            <li class="active">
+19:                <a href="#">Nova conta</a>
+20:            </li>
+21:        
+22:        </ul>
+23:    
+24:        <ul class="nav navbar-nav navbar-right">
+25:    
+26:          
+27:            <li>
+28:              <%= link_to 'Entrar', entrar_path %>
+29:          </li>
+30:          <% else %>
+31:            <li class="dropdown">
+32:              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+33:                bem vindo, <%= current_user.name %> <span class="caret"></span>
+34:              </a>
+35:              <ul class="dropdown-menu">
+36:                <li>
+37:                  <%= link_to 'Minha Pagina', user_contacts_path(current_user) %>
+38:                </li>
+39:                <li>
+40:                  <%= link_to 'Editar', edit_user_path(current_user) %>
+41:                </li>
+42:                <li class="divider" role="separator"></li>
+43:                <li>
+44:                  <%= link_to 'Sair', sair_path, method: :delete %>
+45:                </li>
+46:              </ul>
+47:            </li>
+48:         
+49:    
+50:        </ul>
+51:    
+52:      </div>
+53:    
+54:      </div>
+55:    
+56:    </nav>
+  
+app/views/layouts/_header.html.erb:30: else without rescue is useless
+app/views/layouts/_header.html.erb:30: else without rescue is useless
+app/views/layouts/_header.html.erb:30: else without rescue is useless
+app/views/layouts/_header.html.erb:30: else without rescue is useless
+app/views/layouts/_header.html.erb:30: else without rescue is useless
+app/views/layouts/_header.html.erb:30: else without rescue is useless
+app/views/layouts/application.html.erb:14
+Started GET "/" for ::1 at 2022-08-17 02:58:34 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 136)
+  Rendered layouts/_header.html.erb (Duration: 1.7ms | Allocations: 322)
+  Rendered layouts/_footer.html.erb (Duration: 15.6ms | Allocations: 4447)
+  Rendered layout layouts/application.html.erb (Duration: 48.9ms | Allocations: 12206)
+Completed 500 Internal Server Error in 57ms (Allocations: 13201)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `sobre_path' for #<ActionView::Base:0x0000000000c7d8>):
+     6:   <nav>
+     7:     <ul>
+     8:       <li>
+     9:         <%= link_to 'Sobre', sobre_path %>
+    10:       </li>
+    11:       <li>
+    12:         <%= link_to 'Contato', contato_path %>
+  
+app/views/layouts/_footer.html.erb:9
+app/views/layouts/application.html.erb:22
+Started GET "/" for ::1 at 2022-08-17 02:58:56 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 136)
+  Rendered layouts/_header.html.erb (Duration: 1.1ms | Allocations: 320)
+  Rendered layouts/_footer.html.erb (Duration: 0.7ms | Allocations: 258)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 8009)
+Completed 200 OK in 13ms (Views: 11.9ms | Allocations: 9065)
+
+
+Started GET "/" for ::1 at 2022-08-17 03:04:04 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 496.2ms | Allocations: 28373)
+Completed 500 Internal Server Error in 498ms (Allocations: 28670)
+
+
+  
+ActionView::Template::Error (Error: Undefined variable: "$gray-medium-light".
+        on line 22:27 of app/assets/stylesheets/application.scss
+>>     border-top: 1px solid $gray-medium-light;
+
+   --------------------------^
+):
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    10:     <%= javascript_importmap_tags %>
+    11:   </head>
+    12: 
+  
+app/assets/stylesheets/application.scss:22
+app/views/layouts/application.html.erb:9
+Started GET "/" for ::1 at 2022-08-17 03:07:09 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 277.5ms | Allocations: 13917)
+Completed 500 Internal Server Error in 278ms (Allocations: 14214)
+
+
+  
+ActionView::Template::Error (Error: Invalid CSS after " footer": expected 1 selector or at-rule, was "{"
+        on line 6:8 of app/assets/stylesheets/application.scss
+>>  footer {
+
+   -------^
+):
+     6:     <%= csrf_meta_tags %>
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    10:     <%= javascript_importmap_tags %>
+    11:   </head>
+    12: 
+  
+app/assets/stylesheets/application.scss:6
+app/views/layouts/application.html.erb:9
+Started GET "/" for ::1 at 2022-08-17 03:07:35 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 16)
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 93)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 73)
+  Rendered layout layouts/application.html.erb (Duration: 647.6ms | Allocations: 43386)
+Completed 200 OK in 649ms (Views: 648.5ms | Allocations: 43714)
+
+
+Started GET "/" for ::1 at 2022-08-17 03:08:16 -0300
+Processing by StaticPagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered static_pages/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 139)
+  Rendered layouts/_header.html.erb (Duration: 1.9ms | Allocations: 320)
+  Rendered layouts/_footer.html.erb (Duration: 1.4ms | Allocations: 258)
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | Allocations: 7818)
+Completed 200 OK in 36ms (Views: 34.0ms | Allocations: 8844)
+
+
